@@ -24,3 +24,8 @@
     align-items: center;
     margin: 0 8px;
 }
+
+.emptytodos-icon {
+    width: 100px;
+    height: 100px;
+}
