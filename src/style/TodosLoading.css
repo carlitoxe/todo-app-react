@@ -1,0 +1,53 @@
+.loadingtodo-container {
+    margin: 1em;
+    padding: 0 12px;
+    font-size: large;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px black;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 420px;
+}
+
+.loadingtodo-completeicon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.loadingtodo-text {
+    color: gainsboro;
+    padding: 14px 1em;
+    margin: 0;
+    flex: 1;
+}
+
+.loadingtodo-deleteicon {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    align-items: center;
+}
+
+.loadingtodo-container,
+.loadingtodo-completeicon 
+.loadingtodo-deleteicon {
+    background: linear-gradient(90deg, #242424, rgb(105, 105, 105));
+    background-size: 400% 400%;
+    animation: loadingAnimation 2.5s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
