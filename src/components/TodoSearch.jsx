@@ -7,12 +7,10 @@ function TodoSearch() {
     const { searchValue, setSearchValue } = useContext(TodoContext)
 
     const onSearchValue = event => {
-        console.log(event.target.value);
         setSearchValue(event.target.value);
     }
     return (
         <>
-            
             <input 
                 type="text" 
                 placeholder="Search ToDo" 
@@ -20,7 +18,6 @@ function TodoSearch() {
                 value={searchValue} 
                 onChange={onSearchValue}
             />
-            {/* <p>{searchValue}</p> */}
         </>
     )
 }
