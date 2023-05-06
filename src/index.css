@@ -15,11 +15,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
-header {
+.header {
   display: flex;
   text-align: center;
   justify-content: center;
-  align-items: center;
 }
 
 h1 {

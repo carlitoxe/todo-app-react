@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TodoContext } from "./components/TodoContext";
+import { TodoHeader } from "./components/TodoHeader";
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
@@ -12,6 +13,7 @@ import { TodosLoading } from "./components/TodosLoading";
 import { EmptyTodos } from "./components/EmptyTodos";
 import logo from "./assets/logo.png"
 
+
 function AppUI() {
     const {
         loading, 
@@ -21,16 +23,28 @@ function AppUI() {
         completeTodo, 
         deleteTodo,
         openModal,
-        setOpenModal 
+        setOpenModal,
+        totalTodos, 
+        completedTodos,
+        searchValue, 
+        setSearchValue,  
     } = useContext(TodoContext)
 
     return (    
     <>
-      <header>
-        <h1>ToDo App</h1><img src={logo} className="logo" alt="logo"></img>
-      </header>
-      <TodoCounter />
-      <TodoSearch /> 
+      <TodoHeader>
+          <div className="header">
+              <h1>ToDo App</h1><img src={logo} className="logo" alt="logo"></img>
+          </div>
+          <TodoCounter 
+              totalTodos={totalTodos} 
+              completedTodos={completedTodos} 
+          />
+          <TodoSearch 
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+          />
+      </TodoHeader>
       <TodoList>
         {error && <TodosError error={error} />}
         {loading && <TodosLoading />}
@@ -57,7 +71,7 @@ function AppUI() {
       <CreateTodoButton
         setOpenModal={setOpenModal}
       />
- 
+
       
     </>);
 }
