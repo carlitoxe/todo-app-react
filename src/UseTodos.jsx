@@ -2,9 +2,7 @@ import React, { createContext, useState } from "react";
 import { useLocalStorage } from "./UseLocalStorage";
 import { v4 as uuidv4 } from 'uuid';
 
-const TodoContext = createContext();
-
-function TodoProvider(props) {
+function useTodos() {
     const { 
         item: todos, 
         saveItem: saveTodos, 
@@ -64,25 +62,21 @@ function TodoProvider(props) {
     setTodos(todosUpdate)
   } */
 
-    return (
-        <TodoContext.Provider value={{
-            loading, 
-            error,
-            countTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            addTodo,
-            completeTodo,
-            deleteTodo,
-            openModal,
-            setOpenModal,
-        }}>
-            {props.children}
-        </TodoContext.Provider>
-    )
+    return {
+      loading, 
+      error,
+      countTodos,
+      completedTodos,
+      searchValue,
+      setSearchValue,
+      searchedTodos,
+      addTodo,
+      completeTodo,
+      deleteTodo,
+      openModal,
+      setOpenModal,
+    }
 }
 
-export { TodoContext, TodoProvider }
+export { useTodos }
 

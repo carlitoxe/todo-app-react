@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createPortal } from 'react-dom';
 import '../style/Modal.css';
 
-function Modal({ children, setOpenModal }) {
+function Modal({ children }) {
 /*     const closeModal = () => {
         setOpenModal(false)
     } */
