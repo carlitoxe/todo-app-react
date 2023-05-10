@@ -1,6 +1,6 @@
 .emptytodos-container {
     font-size: 1.5em;
-
+    margin-top: 1.3em;
 }
 
 .emptytodos-text {
@@ -11,7 +11,7 @@
 }
 
 .emptytodos-add-button {
-    background-color: #535bf2;
+    background-color: #646cff;
     border: none;
     border-radius: 50%;
     font-size: 26px; 
