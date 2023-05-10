@@ -10,6 +10,7 @@ li {
     align-items: center;
     cursor: pointer;
     width: calc(100% - 62px);
+    max-width: 420px;
 }
 
 li.completed {

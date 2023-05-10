@@ -54,7 +54,28 @@ return (
             setSearchValue={setSearchValue}
         />
     </TodoHeader>
-    <TodoList>
+
+    <TodoList
+      error={error}
+      loading={loading}
+      countTodos={countTodos}
+      searchedTodos={searchedTodos}
+      onError={() => <TodosError />}
+      onLoading={() => <TodosLoading />}
+      onEmptyTodos={() => <EmptyTodos />}
+      render={todo => (
+        <TodoItem 
+          key={todo.id} 
+          id={todo.id} 
+          text={todo.text} 
+          completed={todo.completed}
+          onCompleted={() => completeTodo(todo.id)} 
+          onDelete={() => deleteTodo(todo.id)}
+        />
+        )}
+    />  
+
+ {/*    <TodoList>
       {error && <TodosError error={error} />}
       {loading && <TodosLoading />}
       {(!loading && !countTodos) && <EmptyTodos />}
@@ -69,7 +90,7 @@ return (
         onDelete={() => deleteTodo(todo.id)}
       />
       )) }
-    </TodoList>
+    </TodoList> */}
     
     {openModal && (
     <Modal>
