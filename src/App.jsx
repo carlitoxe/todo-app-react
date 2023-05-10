@@ -41,7 +41,7 @@ return (
   <>
     <TodoHeader>
         <div className="header">
-            <a href="/">
+            <a href="/todo-app-react/">
               <h1>ToDo App</h1><img src={logo} className="logo" alt="logo"></img>
             </a>
         </div>
