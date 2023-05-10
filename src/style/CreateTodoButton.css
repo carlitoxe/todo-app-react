@@ -1,3 +1,8 @@
+.button-container {
+  border: none;
+  background-color: transparent;
+}
+
 .CreateTodoButton {
   background-color: transparent;
   border-radius: 50%;
@@ -7,12 +12,12 @@
   cursor: pointer;
   position: fixed;
   bottom: 24px;
-  left: 46%;
+  left: 46.5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 76px;
-  width: 76px;
+  height: 68px;
+  width: 68px;
   z-index: 1;
   transform: rotate(0);
   transition: .3s ease;
