@@ -60,10 +60,13 @@ return (
       loading={loading}
       countTodos={countTodos}
       searchedTodos={searchedTodos}
+      searchValue={searchValue}
       onError={() => <TodosError />}
       onLoading={() => <TodosLoading />}
       onEmptyTodos={() => <EmptyTodos />}
-      render={todo => (
+      onEmptySearchResults = {(searchValue) => <p className='empty-results'>There is no coincidences for: {searchValue}</p>}
+
+/*       render={todo => (
         <TodoItem 
           key={todo.id} 
           id={todo.id} 
@@ -72,8 +75,21 @@ return (
           onCompleted={() => completeTodo(todo.id)} 
           onDelete={() => deleteTodo(todo.id)}
         />
-        )}
-    />  
+        )} */
+    >  
+
+  {todo => (
+      <TodoItem 
+        key={todo.id} 
+        id={todo.id} 
+        text={todo.text} 
+        completed={todo.completed}
+        onCompleted={() => completeTodo(todo.id)} 
+        onDelete={() => deleteTodo(todo.id)}
+      />
+      )}
+    </ TodoList>
+
 
  {/*    <TodoList>
       {error && <TodosError error={error} />}
