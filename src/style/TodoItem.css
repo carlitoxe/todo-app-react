@@ -26,6 +26,17 @@ p {
     overflow-wrap: anywhere;
 }
 
+.edit-container {
+    width: 24px;
+    height: 24px;
+    padding: 5px 10px;
+    margin-top: 1px;
+}
+
+.edit-container:hover {
+    color: #535bf2;
+}
+
 .delete-icon {
     width: 20px;
     height: 20px;

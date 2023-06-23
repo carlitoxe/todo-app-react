@@ -1,11 +1,12 @@
 import React, { createContext, useState } from "react";
-import { useLocalStorage } from "./UseLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 import { v4 as uuidv4 } from 'uuid';
 
 function useTodos() {
     const { 
         item: todos, 
-        saveItem: saveTodos, 
+        saveItem: saveTodos,
+        synchronizerItem: synchronizeTodos, 
         loading, 
         error 
       } = useLocalStorage('TODOS_V1', [])
@@ -34,6 +35,12 @@ function useTodos() {
           saveTodos(todosUpdate);
       };
 
+      const getTodo = id => {
+        const todoIndex = todos.findIndex(todo => todo.id === id)
+        return todos[todoIndex];
+      }    
+      
+      
       const completeTodo = id => {
         const todosUpdate = todos.map(todo => {
           if (todo.id === id) {
@@ -41,10 +48,20 @@ function useTodos() {
           }
           return todo;
           })
-        saveTodos(todosUpdate);
-      };
-      
-      const deleteTodo = id => {
+          saveTodos(todosUpdate);
+        };
+
+        const editTodo = (id, text) => {
+          const todosUpdate = todos.map(todo => {
+            if (todo.id === id) {
+              todo.text = text;
+            }
+            return todo;
+            })
+          saveTodos(todosUpdate); 
+        }
+        
+        const deleteTodo = id => {
         const todosUpdate = todos.filter(todo => todo.id !== id);
         saveTodos(todosUpdate);
     }
@@ -62,20 +79,28 @@ function useTodos() {
     setTodos(todosUpdate)
   } */
 
-    return {
-      loading, 
-      error,
-      countTodos,
-      completedTodos,
-      searchValue,
+  const state = {
+    loading, 
+    error,
+    countTodos,
+    completedTodos,
+    searchValue,
+    searchedTodos,
+    openModal,
+    getTodo,
+  }
+
+    const stateUpdaters = {
       setSearchValue,
-      searchedTodos,
       addTodo,
       completeTodo,
+      editTodo,
       deleteTodo,
-      openModal,
       setOpenModal,
+      synchronizeTodos,
     }
+
+    return { state, stateUpdaters }
 }
 
 export { useTodos }

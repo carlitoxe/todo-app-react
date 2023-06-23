@@ -10,6 +10,13 @@ form {
     border-radius: 12px;
 }
 
+.newtodo-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 label {
     text-align: center;
     font-weight: 500;

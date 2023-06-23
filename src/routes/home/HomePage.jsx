@@ -1,57 +1,63 @@
-import React from "react"
-import { useTodos } from "./UseTodos";
-import { TodoHeader } from "./components/TodoHeader";
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoList } from "./components/TodoList";
-import { TodoItem } from "./components/TodoItem";
-import { TodoForm } from "./components/TodoForm";
-import { CreateTodoButton } from "./components/CreateTodoButton";
-import { Modal } from "./components/Modal";
-import { TodosError } from "./components/TodosError";
-import { TodosLoading } from "./components/TodosLoading";
-import { EmptyTodos } from "./components/EmptyTodos";
-import logo from "./assets/logo.png"
+import { useTodos } from "../useTodos";
+import { TodoHeader } from "../../components/TodoHeader";
+import { TodoCounter } from "../../components/TodoCounter";
+import { TodoSearch } from "../../components/TodoSearch";
+import { TodoList } from "../../components/TodoList";
+import { TodoItem } from "../../components/TodoItem";
+import { TodoForm } from "../../components/TodoForm";
+import { CreateTodoButton } from "../../components/CreateTodoButton";
+import { Modal } from "../../components/Modal";
+import { TodosError } from "../../components/TodosError";
+import { TodosLoading } from "../../components/TodosLoading";
+import { EmptyTodos } from "../../components/EmptyTodos";
+import { ChangeAlert } from '../../components/ChangeAlert';
+import logo from "../../assets/logo.png"
+import { useNavigate } from "react-router-dom";
 
-  /* const defaultTodos = [
-    { id: uuidv4(), text: 'Cut the onion', completed: false },
-    { id: uuidv4(), text: 'dsfsdfdsfsdfsfsdfdsfdsfsfdsfdsdsdsfdsfdsfsffs', completed: true },
-    { id: uuidv4(), text: 'Cut the potato', completed: false },
-    { id: uuidv4(), text: 'Hello World', completed: false }
-] */
+function HomePage() {
+  const navigate = useNavigate();
 
-
-function App() {
   const {
-    loading, 
-    error, 
-    countTodos,
-    searchedTodos, 
-    completeTodo, 
-    deleteTodo,
-    openModal,
-    setOpenModal,
-    completedTodos,
-    searchValue, 
-    setSearchValue,
-    addTodo,  
-} = useTodos()
+    state, 
+    stateUpdaters
+  } = useTodos()
+
+const {
+  error, 
+  loading, 
+  searchedTodos, 
+  countTodos,
+  completedTodos,
+  openModal,
+  searchValue,
+} = state;
+
+const {
+  setOpenModal,
+  addTodo,
+  completeTodo, 
+  deleteTodo,
+  setSearchValue,
+  synchronizeTodos,
+} = stateUpdaters;
 
 return (    
   <>
-    <TodoHeader>
-        <div className="header">
+            <div className="header">
             <a href="/todo-app-react/">
               <h1>ToDo App</h1><img src={logo} className="logo" alt="logo"></img>
             </a>
         </div>
+    <TodoHeader loading={loading}>
         <TodoCounter 
             countTodos={countTodos} 
-            completedTodos={completedTodos} 
+            completedTodos={completedTodos}
+            // loading={loading} 
         />
         <TodoSearch 
             searchValue={searchValue}
             setSearchValue={setSearchValue}
+            // loading={loading} 
         />
     </TodoHeader>
 
@@ -85,10 +91,11 @@ return (
         text={todo.text} 
         completed={todo.completed}
         onCompleted={() => completeTodo(todo.id)} 
+        onEdit={() => navigate(`edit/${todo.id}`, { state: { todo } })} 
         onDelete={() => deleteTodo(todo.id)}
       />
       )}
-    </ TodoList>
+    </TodoList>
 
 
  {/*    <TodoList>
@@ -114,12 +121,14 @@ return (
     </Modal>
     )}
 
+<ChangeAlert synchronize={synchronizeTodos} />
+
     <CreateTodoButton
-      setOpenModal={setOpenModal}
+      //setOpenModal={setOpenModal}
     />
 
     
   </>);
 }
 
-export default App
+export { HomePage };
