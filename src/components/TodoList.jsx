@@ -12,12 +12,17 @@ function TodoList(props) {
 
             {(!!props.countTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchValue)}
 
-            {(!props.loading && !props.error) && props.searchedTodos.map(renderFunc)}
+            {(!props.loading && !props.error) && 
+            // This is the same that searchedTodos.map(todo => ...)
+                <ul>
+                    {props.searchedTodos.map(renderFunc)} 
+                </ul> 
+            }
             {/* {searchedTodos.map(todo => props.render(todo))} */}
-
+{/* 
             <ul>
                 {props.children}
-            </ul>
+            </ul> */}
         </section>
     )
 }
