@@ -54,7 +54,7 @@ function useLocalStorage(itemName, initialValue) {
         } catch(error) {
           onError(error);
         }
-      }, 1000)
+      }, 500)
     }, [synchronizeItem]);
   
   
