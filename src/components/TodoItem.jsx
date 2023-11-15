@@ -1,10 +1,10 @@
 import '../style/TodoItem.css'
 
 function TodoItem({completed, text, onCompleted, onDelete, onEdit}) {
-    let checked = false;
-    if (completed) {
-        checked = true;
-    }
+    let checked = completed ? true : false;
+    // if (completed) {
+    //     checked = true;
+    // }
 
     return (
         <li className={`${completed && 'completed'}`}>
