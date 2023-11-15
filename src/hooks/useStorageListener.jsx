@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function useStorageListener( synchronize ) {
         const [storageChange, setStorageChange] = useState(false);

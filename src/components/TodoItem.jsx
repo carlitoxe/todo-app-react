@@ -1,4 +1,3 @@
-import React from "react";
 import '../style/TodoItem.css'
 
 function TodoItem({completed, text, onCompleted, onDelete, onEdit}) {

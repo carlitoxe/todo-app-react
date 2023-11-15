@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { TodoForm } from "../../components/TodoForm";
-import { useTodos } from "../useTodos";
+import { useTodos } from "../../hooks/useTodos";
 
 function NewTodoPage() {
     const { stateUpdaters } = useTodos();

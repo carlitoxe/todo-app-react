@@ -1,4 +1,5 @@
-import { useTodos } from "../useTodos";
+import { useNavigate } from "react-router-dom";
+import { useTodos } from "../../hooks/useTodos";
 import { TodoHeader } from "../../components/TodoHeader";
 import { TodoCounter } from "../../components/TodoCounter";
 import { TodoSearch } from "../../components/TodoSearch";
@@ -12,7 +13,6 @@ import { TodosLoading } from "../../components/TodosLoading";
 import { EmptyTodos } from "../../components/EmptyTodos";
 import { ChangeAlert } from '../../components/ChangeAlert';
 import logo from "../../assets/logo.png"
-import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -96,7 +96,6 @@ return (
       />
       )}
     </TodoList>
-
 
  {/*    <TodoList>
       {error && <TodosError error={error} />}
