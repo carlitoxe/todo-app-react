@@ -61,8 +61,6 @@ return (
         />
     </TodoHeader>
 
-
-
     <TodoList
       error={error}
       loading={loading}
